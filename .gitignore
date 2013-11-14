@@ -37,3 +37,7 @@ nosetests.xml
 
 # Pycharm
 .idea/
+
+# django ignoring
+local_settings.py
+*.db

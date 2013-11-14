@@ -3,4 +3,6 @@ gym-backend
 
 Django backend for simple gym application
 
-test github
+Erd-scheme:
+
+![Entity relation diagram](etc/erd.png)

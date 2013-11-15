@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+import creole
+
 
 class MuscleGroup(models.Model):
     """
@@ -43,3 +45,7 @@ class Exercise(models.Model):
     youtube_link = models.URLField(
         verbose_name=_('Youtube link')
     )
+
+    @property
+    def markup_description(self):
+        return creole.creole2html(self.description)

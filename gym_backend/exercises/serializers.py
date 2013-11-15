@@ -17,6 +17,7 @@ class MuscleGroupSerializer(serializers.ModelSerializer):
 
 class ExerciseSerializer(serializers.ModelSerializer):
     muscle_group = serializers.Field('muscle_group.name')
+    markup_description = serializers.Field('markup_description')
 
     class Meta:
         model = models.Exercise

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from rest_framework import serializers
 from rest_framework.renderers import JSONRenderer
-
 from . import models
 
 
@@ -53,5 +52,5 @@ class ExerciseSerializer(serializers.HyperlinkedModelSerializer):
         fields = (
             'pk', 'url', 'name', 'description',
             'muscle_group', 'muscle_group_pk',
-            'markup_link', 'youtube_link'
+           'markup_link', 'youtube_link'
         )

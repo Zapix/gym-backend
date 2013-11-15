@@ -15,7 +15,7 @@ class MuscleGroup(models.Model):
 
     class Meta:
         verbose_name = _('Muscle group')
-        verbose_name = _('Muscle groups')
+        verbose_name_plural = _('Muscle groups')
         ordering = ['id']
 
     def __unicode__(self):

@@ -1,0 +1,24 @@
+div.restructed-preview{
+    padding: 20px;
+    border: 1px solid grey;
+}
+
+div.restructed-preview h1 {
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+    background: none;
+}
+
+div.restructed-preview h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    background: none;
+}
+
+div.restructed-preview h3{
+    font-weight: bold;
+    color: black;
+    background: none;
+}

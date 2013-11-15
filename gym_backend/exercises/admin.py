@@ -15,4 +15,5 @@ class ExerciseAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.TextField: {'widget': exercise_widgets.ReStructuredTextarea}
     }
+
 admin.site.register(exercise_models.Exercise, ExerciseAdmin)

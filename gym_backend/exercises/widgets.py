@@ -14,8 +14,13 @@ class ReStructuredTextarea(widgets.Textarea):
         final_attrs = self.build_attrs(attrs, name=name)
         return format_html(
             """<textarea{0}>\r\n{1}</textarea>
-                <div class="restructered-preview">%s</div>
+                <div class="restructed-preview">%s</div>
             """ % creole.creole2html(unicode(value)),
             flatatt(final_attrs),
             force_text(value)
         )
+
+    class Media:
+        css = {
+            'all': ('restructed-preview.css', )
+        }

@@ -5,7 +5,10 @@ from . import models
 
 
 class MuscleGroupSerializer(serializers.ModelSerializer):
-    exercise_set = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    exercise_set = serializers.PrimaryKeyRelatedField(
+        many=True,
+        read_only=True
+    )
 
     class Meta:
         model = models.MuscleGroup

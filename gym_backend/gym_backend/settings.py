@@ -41,6 +41,7 @@ INSTALLED_APPS = (
 
     'south',
     'rest_framework',
+    'corsheaders',
 
     'exercises'
 )
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 )
 
 ROOT_URLCONF = 'gym_backend.urls'
@@ -88,6 +90,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+#django-cors-headers config
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
+
+# getting local_settings
 try:
     LOCAL_SETTINGS
 except NameError:

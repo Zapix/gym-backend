@@ -4,12 +4,12 @@ from rest_framework.renderers import JSONRenderer
 from . import models
 
 
-class ExerciseRelatedSerializer(serializers.HyperlinkedModelSerializer):
+class ExerciseRelatedSerializer(serializers.ModelSerializer):
     pk = serializers.Field('pk')
 
     class Meta:
         model = models.Exercise
-        fields = ('pk', 'url', 'name')
+        fields = ('pk', 'name')
 
 
 class ExerciseRelatedField(serializers.RelatedField):
@@ -35,7 +35,7 @@ class MuscleGroupSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = models.MuscleGroup
-        fields = ('url', 'name', 'exercise_set')
+        fields = ('pk', 'url', 'name', 'exercise_set')
 
 
 class ExerciseSerializer(serializers.HyperlinkedModelSerializer):

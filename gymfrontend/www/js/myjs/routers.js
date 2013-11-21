@@ -71,8 +71,9 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
                     showExerciseList(muscleGroup.get('name'));
                 }, this);
                 muscleGroup.fetch();
+            }else{
+                showExerciseList();
             }
-            showExerciseList();
         },
         exerciseDetail: function(id){
             var router = this;

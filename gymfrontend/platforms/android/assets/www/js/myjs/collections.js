@@ -11,24 +11,18 @@ define(['jquery', 'backbone', 'myjs/models'], function($, Backbone, applicationM
 
     var ExerciseList = Backbone.Collection.extend({
         model: applicationModels.Exercise,
-        url: 'http://192.168.0.33:8000/api/v1/exercises/',
-        selectedGroup: null,
-        getSelected: function(){
-            if(this.selectedGroup){
-                var selectedGroup = this.selectedGroup;
-                return this.filter(function(item){
-                    return item.get('muscle_group_pk') == selectedGroup
-                });
-            }
-            return this.toArray();
+        muscleGroupPk: null,
+        muscleGroupName: null,
+        initialize: function(models, options){
+            var properties = options|| {};
+            this.muscleGroupPk = properties.muscleGroupPk || null;
+            this.muscleGroupName = properties.muscleGroupName || 'Все';
         },
-        selectGroup: function(value){
-            this.selectedGroup = value;
-            this.trigger('selectchanged', value);
-        },
-        deselectGroup: function(){
-            this.selectedGroup = null;
-            this.trigger('selectchanged', null);
+        url: function(){
+            var link = 'http://192.168.0.33:8000/api/v1/exercises/' ;
+            link += (this.muscleGroupPk)?'?muscle_group='+this.muscleGroupPk: '';
+            console.log(link);
+            return link
         }
     });
 

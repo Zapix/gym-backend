@@ -35,8 +35,6 @@
                     Это главное окно
                 </p>
                 <ul data-role="listview">
-                    <li><a href="#page/1">Страница 1</a></li>
-                    <li><a href="#page/2">Страница 2</a></li>
                     <li><a href="#muscle/groups">Список упражнений</a></li>
                 </ul>
             </div>
@@ -60,12 +58,37 @@
             </div>
             <div data-role="content">
                 <ul id="muscle-group-ul" data-role="listview">
-                    <li><a href="#">Все</a></a>
+                    <li><a href="#muscle/groups/exercises">Все</a></a>
                 </ul>
             </div>
         </script>
         <script type="text/template" id="muscle-group-li-tmpl">
-            <li><a href="#"><%- muscleGroup.get('name') %></a></li>
+            <li><a href="#muscle/groups/<%- muscleGroup.id %>/exercises"><%- muscleGroup.get('name') %></a></li>
+        </script>
+        <script type="text/template" id="exercise-list-tmpl">
+            <div data-role="header" data-position="fixed">
+                <a data-icon="back" class="back" href="#">Назад</a>
+                <h1><%- title %></h1>
+            </div>
+            <div data-role="content">
+                <ul data-role="listview">
+                    <% _.each(exerciseList, function(exercise) { %>
+                        <li><a href="#exercises/<%- exercise.id %>"><%= exercise.get('name') %></a></li>
+                    <% }); %>
+                </ul>
+            </div>
+        </script>
+        <script type="text/template" id="exercise-detail-tmpl">
+            <div data-role="header" data-position="fixed">
+                <a data-icon="back" class="back">Назад</a>
+                <h1><%- exercise.get('name') %></h1>
+            </div>
+            <div data-role="content">
+                <article>
+                    <%= markupData %>
+                </article>
+                <a data-role="button" href="<%- exercise.get('youtube_link') %>" target="blank">Посмотерь инструкцию на YouTube</a>
+            </div>
         </script>
         <script type="text/javascript" src="js/bower_components/requirejs/require.js" data-main="js/app.js"></script>
     </head>

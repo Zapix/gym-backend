@@ -59,6 +59,9 @@
             <div data-role="content">
                 <ul id="muscle-group-ul" data-role="listview">
                     <li><a href="#muscle/groups/exercises">Все</a></a>
+                    <% _.each(muscleGroupList, function(group){ %>
+                        <li><a href="#muscle/groups/exercises"><%- group.get('name') %></a></li>
+                    <% }); %>
                 </ul>
             </div>
         </script>

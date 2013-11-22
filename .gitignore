@@ -41,3 +41,6 @@ nosetests.xml
 # django ignoring
 local_settings.py
 *.db
+
+#iqnore web-server script
+web-server.js

@@ -15,18 +15,6 @@ define(['jquery', 'backbone'], function($, Backbone, applicationCollections){
         }
     });
 
-    applicationViews.PageView = Backbone.View.extend({
-        template_el: '#page-tmpl',
-        render: function(event){
-            $.mobile.loading('hide');
-            $(this.el).html(_.template(
-                $(this.template_el).html(),
-                {number: this.attributes.number})
-            )
-            return this;
-        }
-    });
-
     applicationViews.MuscleGroupListView = Backbone.View.extend({
         template_el: '#muscle-group-list-tmpl',
         render: function(){

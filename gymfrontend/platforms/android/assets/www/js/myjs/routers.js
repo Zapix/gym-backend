@@ -6,7 +6,6 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
     var ApplicationRouter = Backbone.Router.extend({
         'routes': {
             "": 'main',
-            "page/:id": 'page',
             "muscle/groups": 'muscleGroupList',
             "muscle/groups/exercises": 'exerciseList',
             "muscle/groups/:muscleGroupPk/exercises": 'exerciseList',
@@ -19,29 +18,31 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
             });
             this.firstPage = true;
         },
+
         main: function(){
             console.log('main page');
             this.changePage(new applicationViews.MainView());
         },
-        page: function(id){
-            console.log('page ' + id);
-            this.changePage(new applicationViews.PageView(
-                {
-                    'attributes': {
-                        number:id
-                    }
-                }
-            ));
-        },
+
         muscleGroupList: function(){
-            /**
-             * TODO: refactor as this.exerciseList
-             */
+            var router = this;
             console.log('Muscle group list');
-            this.changePage(new applicationViews.MuscleGroupListView({
-                collection:new applicationCollections.MuscleGroupList
-            }));
+            $.mobile.loading('show', {
+                theme: 'a',
+                text: 'Загружаю...',
+                textVisible: true
+            });
+            var muscleGroupList = new applicationCollections.MuscleGroupList;
+
+            muscleGroupList.on('sync', function(){
+                $.mobile.loading('hide');
+                router.changePage(new applicationViews.MuscleGroupListView({
+                    collection: muscleGroupList
+                }));
+            });
+            muscleGroupList.fetch();
         },
+
         exerciseList: function(muscleGroupPk){
             var router = this
             console.log('Exercise list ' + (muscleGroupPk || ''));
@@ -75,6 +76,7 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
                 showExerciseList();
             }
         },
+
         exerciseDetail: function(id){
             var router = this;
             console.log('Detail exercise ' + id);
@@ -98,6 +100,7 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
             }, this);
             exercise.fetch();
         },
+
         changePage: function(page){
             $(page.el).attr('data-role', 'page');
             page.render();
@@ -108,14 +111,6 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
                     changeHash: false
                 }
             )
-            /* show loading widget if view ask it */
-            if(page.isShowLoading){
-                $.mobile.loading('show',{
-                    theme: 'a',
-                    text: 'Загружаю...',
-                    textVisible: true
-                });
-            }
         }
     });
     return ApplicationRouter;

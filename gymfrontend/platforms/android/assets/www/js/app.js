@@ -43,4 +43,4 @@ require(['backbone', 'index', 'myjs/routers'], function(Backbone, app, Applicati
         Backbone.history.start();
         app.initialize();
     });
-})
+});

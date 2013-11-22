@@ -17,7 +17,7 @@
     specific language governing permissions and limitations
     under the License.
 -->
-<html ng-app="gymApp">
+<html>
     <head>
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
@@ -60,7 +60,7 @@
                 <ul id="muscle-group-ul" data-role="listview">
                     <li><a href="#muscle/groups/exercises">Все</a></a>
                     <% _.each(muscleGroupList, function(group){ %>
-                        <li><a href="#muscle/groups/exercises"><%- group.get('name') %></a></li>
+                        <li><a href="#muscle/groups/<%- group.id %>/exercises"><%- group.get('name') %></a></li>
                     <% }); %>
                 </ul>
             </div>

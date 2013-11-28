@@ -13,11 +13,7 @@ router.register('muscles', exercises_views.MuscleGroupViewSet)
 router.register('exercises', exercises_views.ExercisesViewSet)
 
 urlpatterns = patterns(
-    '',
-    # Examples:
-    # url(r'^$', 'gym_backend.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
     url(r'^admin/', include(admin.site.urls)),
-    url(r'api/v1/',  include(router.urls)),
+    url(r'^api/v1/',  include(router.urls)),
+    url(r'^api/v1/users', include('userprofiles.urls'))
 )

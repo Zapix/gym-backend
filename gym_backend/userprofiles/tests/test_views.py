@@ -50,7 +50,7 @@ class LoginTestCase(test.TestCase):
 
         response = self.client.post(
             reverse('api_login'),
-            data = json.dumps({
+            data=json.dumps({
                 'username': 'test',
                 'password': 'test'
             }),
@@ -63,12 +63,10 @@ class LoginTestCase(test.TestCase):
 
         response = self.client.post(
             reverse('api_login'),
-            data = json.dumps({
+            data=json.dumps({
                 'username': 'test',
                 'password': 'test'
             }),
             content_type='application/json'
         )
         self.assertEqual(response.status_code, 400)
-
-

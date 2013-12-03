@@ -6,6 +6,7 @@ from django import http
 from django.contrib.auth import forms as auth_forms
 from django.contrib.auth import login
 from django.contrib.auth import logout
+from django.views.decorators.csrf import csrf_exempt
 
 
 def post_allowed(func):
@@ -23,6 +24,7 @@ def post_allowed(func):
     return wrapper
 
 
+@csrf_exempt
 @post_allowed
 def api_registration(request):
     """
@@ -46,6 +48,7 @@ def api_registration(request):
     )
 
 
+@csrf_exempt
 @post_allowed
 def api_login(request):
     """

@@ -15,5 +15,5 @@ router.register('exercises', exercises_views.ExercisesViewSet)
 urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/v1/',  include(router.urls)),
-    url(r'^api/v1/users', include('userprofiles.urls'))
+    url(r'^api/v1/users/', include('userprofiles.urls'))
 )

@@ -6,6 +6,8 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
     var ApplicationRouter = Backbone.Router.extend({
         'routes': {
             "": 'main',
+            "test": 'test',
+            "login": 'login',
             "muscle/groups": 'muscleGroupList',
             "muscle/groups/exercises": 'exerciseList',
             "muscle/groups/:muscleGroupPk/exercises": 'exerciseList',
@@ -21,7 +23,15 @@ define(['backbone', 'myjs/views', 'myjs/collections', 'myjs/models'], function(B
 
         main: function(){
             console.log('main page');
-            this.changePage(new applicationViews.MainView());
+            this.changePage(new applicationViews.MainView);
+        },
+
+        test: function(){
+            this.changePage(new applicationViews.TestInheritView);
+        },
+
+        login: function(){
+            this.changePage(new applicationViews.LogInView);
         },
 
         muscleGroupList: function(){
